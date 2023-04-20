@@ -13,9 +13,47 @@
 </head>
 
 <body>
-
-  <script src="assets/js/script.js"></script>
   
+  <div id="app">
+    
+    <div class="container">
+        
+        <div class="slide-container">
+          
+          <img v-bind:src=" slides[currentActive].image " v-bind:alt="slides[currentActive]" />
+          
+          <div class="text">
+            
+            <h2>
+              {{slides[currentActive].title}}
+            </h2>
+            
+            <p>
+              {{slides[currentActive].text}}
+            </p>
+          
+          </div>
+        
+        </div>
+        
+        <div class="carousel">
+          
+          <div class="prev" @click="prev"></div>
+          <div class="next" @click="next"></div>
+          
+          <div v-for=" (slide,index) in slides " v-bind:class=" (currentActive == index) ? 'carousel active' : 'image-scroll' " class="image-scroll">
+            <img v-bind:src="slide.image" v-bind:alt="slide">
+          </div>
+        
+        </div>
+    
+    </div>
+  
+  </div>
+  
+  <script src='https://unpkg.com/vue@3/dist/vue.global.js'></script>
+  <script src="./assets/js/script.js"></script>
+    
 </body>
 
 </html>
